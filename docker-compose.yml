@@ -1,0 +1,38 @@
+services:
+  namenode:
+    image: med0712/hadoop-lab:1.0
+    container_name: namenode
+    hostname: namenode
+    command: ["/start-hadoop.sh"]
+    restart: unless-stopped
+    ports:
+      - "9870:9870"
+      - "8088:8088"
+    networks:
+      - hadoop
+
+  datanode1:
+    image: med0712/hadoop-lab:1.0
+    container_name: datanode1
+    hostname: datanode1
+    command: ["/start-hadoop.sh"]
+    restart: unless-stopped
+    depends_on:
+      - namenode
+    networks:
+      - hadoop
+
+  datanode2:
+    image: med0712/hadoop-lab:1.0
+    container_name: datanode2
+    hostname: datanode2
+    command: ["/start-hadoop.sh"]
+    restart: unless-stopped
+    depends_on:
+      - namenode
+    networks:
+      - hadoop
+
+networks:
+  hadoop:
+    driver: bridge
