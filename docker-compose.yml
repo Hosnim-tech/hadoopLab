@@ -1,6 +1,6 @@
 services:
   namenode:
-    image: med0712/hadoop-lab:1.0
+    image: med0712/hadoop-lab:1.1
     container_name: namenode
     hostname: namenode
     command: ["/start-hadoop.sh"]
@@ -12,7 +12,7 @@ services:
       - hadoop
 
   datanode1:
-    image: med0712/hadoop-lab:1.0
+    image: med0712/hadoop-lab:1.1
     container_name: datanode1
     hostname: datanode1
     command: ["/start-hadoop.sh"]
@@ -23,7 +23,7 @@ services:
       - hadoop
 
   datanode2:
-    image: med0712/hadoop-lab:1.0
+    image: med0712/hadoop-lab:1.1
     container_name: datanode2
     hostname: datanode2
     command: ["/start-hadoop.sh"]
