@@ -1,10 +1,10 @@
-# 🐘 Hadoop Lab — Docker-Based HDFS & MapReduce Environment
+# Hadoop Lab — Docker-Based HDFS & MapReduce Environment
 
 A self-contained lab environment for learning **Apache Hadoop**, **HDFS**, **YARN**, and **MapReduce** using Docker. No local Hadoop installation required.
 
 ---
 
-## 🗂️ Repository Structure
+## Repository Structure
 
 ```
 hadoopLab/
@@ -17,7 +17,7 @@ hadoopLab/
 
 ---
 
-## 🧱 Architecture
+## Architecture
 
 ```
 ┌─────────────────────────────────────────┐
@@ -43,7 +43,7 @@ hadoopLab/
 
 ---
 
-## ✅ Prerequisites
+## Prerequisites
 
 | Tool | Version | Download |
 |---|---|---|
@@ -57,7 +57,7 @@ hadoopLab/
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### 1. Clone the repository
 
@@ -103,7 +103,7 @@ hdfs dfsadmin -report
 
 ---
 
-## 📂 HDFS Operations
+## HDFS Operations
 
 ```bash
 # Create a directory
@@ -121,31 +121,9 @@ hdfs dfs -cat /input/myfile.txt
 # Check replication
 hdfs fsck /input -files -blocks -locations
 ```
-
 ---
 
-## ⚙️ Running the WordCount Job
-
-```bash
-# Inside the namenode container
-cd /root/wc
-
-# Compile
-javac -classpath "$(hadoop classpath)" -d . WordCount.java
-
-# Package
-jar -cvf wordcount.jar WordCount*.class
-
-# Run
-hadoop jar wordcount.jar WordCount /input/book.txt /output_wc
-
-# View results
-hdfs dfs -cat /output_wc/part-r-*
-```
-
----
-
-## 🛑 Stop the Cluster
+## Stop the Cluster
 
 ```bash
 docker compose down
@@ -153,21 +131,9 @@ docker compose down
 
 ---
 
-## 📘 Lab Instructions
+## Lab Instructions
 
 Full step-by-step lab instructions (including exercises on MapReduce optimization, Combiner usage, and custom jobs) are provided separately as a lab handout document.
-
----
-
-## 🐛 Common Issues
-
-| Problem | Solution |
-|---|---|
-| Container exits immediately | Run `docker logs namenode` to inspect errors |
-| Port already in use | Change host ports in `docker-compose.yml` (e.g., `9871:9870`) |
-| Line ending errors on Windows | Run `dos2unix script.sh` inside the container |
-| DataNode not connecting | Wait 15–20 seconds after `docker compose up` before checking |
-| `jps` shows no processes | Restart container: `docker restart namenode` |
 
 ---
 
