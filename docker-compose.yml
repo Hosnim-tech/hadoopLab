@@ -1,6 +1,6 @@
 services:
   namenode:
-    image: med0712/hadoop-lab:1.1
+    image: med0712/hadoop-lab:latest
     container_name: namenode
     hostname: namenode
     command: ["/start-hadoop.sh"]
@@ -8,28 +8,35 @@ services:
     ports:
       - "9870:9870"
       - "8088:8088"
+      - "19888:19888"
     networks:
       - hadoop
 
   datanode1:
-    image: med0712/hadoop-lab:1.1
+    image: med0712/hadoop-lab:latest
     container_name: datanode1
     hostname: datanode1
     command: ["/start-hadoop.sh"]
     restart: unless-stopped
     depends_on:
       - namenode
+    ports:
+      - "8042:8042"   # NodeManager UI (datanode1)
+      - "9864:9864"   # DataNode UI (datanode1)
     networks:
       - hadoop
 
   datanode2:
-    image: med0712/hadoop-lab:1.1
+    image: med0712/hadoop-lab:latest
     container_name: datanode2
     hostname: datanode2
     command: ["/start-hadoop.sh"]
     restart: unless-stopped
     depends_on:
       - namenode
+    ports:
+      - "8043:8042"   # NodeManager UI (datanode2) — different host port!
+      - "9865:9864"   # DataNode UI (datanode2) — different host port!
     networks:
       - hadoop
 
