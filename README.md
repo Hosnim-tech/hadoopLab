@@ -1,4 +1,4 @@
-# Hadoop Lab — Docker-Based HDFS & MapReduce Environment
+# Hadoop Lab: Docker-Based HDFS & MapReduce Environment
 
 A self-contained lab environment for learning **Apache Hadoop**, **HDFS**, **YARN**, and **MapReduce** using Docker. No local Hadoop installation required.
 
@@ -131,12 +131,4 @@ docker compose down
 
 ---
 
-## Lab Instructions
 
-Full step-by-step lab instructions (including exercises on MapReduce optimization, Combiner usage, and custom jobs) are provided separately as a lab handout document.
-
----
-
-## 📄 License
-
-For educational use. Based on Apache Hadoop open-source technologies.
